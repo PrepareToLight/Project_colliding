@@ -24,8 +24,9 @@ while run:
     obj_main3.draw(screen)
 
     for id, rect in enumerate(rects):   #this is an awesome built-in method :)
+        rect.move_bot(id, velocity=3)
         rect.draw(screen) 
-        rect.move_bot(id, velocity=5)
+
         
     
 

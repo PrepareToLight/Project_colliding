@@ -68,11 +68,16 @@ class Rect_Object: #do poprawy !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         obj_user_movement(keys_pressed, self.right, right=self.width)
 
     def move_bot(self, id: int, velocity: int) -> None:
-        ai_movement(self.top, id, velocity, top=self.top.height)
-        ai_movement(self.left, id, velocity, left=self.left.width)
-        ai_movement(self.bottom, id, velocity, bottom=self.bottom.height)
-        ai_movement(self.right, id, velocity, right=self.right.width)
+        ai_movement(self.top, id, velocity, bottom=self.height, right=self.width)
+        ai_movement(self.left, id, velocity, right=self.width, bottom=self.height)
+        ai_movement(self.bottom, id, velocity, top=self.height, right=self.width)
+        ai_movement(self.right, id, velocity, left=self.width, bottom=self.height)
+        self.normalize_move_bot()
         
+    def normalize_move_bot(self) -> None:
+        self.left.x, self.left.y = self.top.x, self.top.y
+        self.bottom.x, self.bottom.y = self.top.x, self.top.y + self.height
+        self.right.x, self.right.y = self.top.x + self.width, self.top.y
 
     def draw(self, Screen)  -> None:
         pg.draw.rect(Screen,(255,255,255),self.top,1)

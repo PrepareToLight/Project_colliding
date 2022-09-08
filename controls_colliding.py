@@ -28,19 +28,23 @@ def vell_arr(n=100,m=2):
     return VEL_arr
 
 VEL_arr = vell_arr(100)
-print(VEL_arr)
+#print(VEL_arr)
 
 def ai_movement(obj, i:int, velocity:int, top=0, left=0, bottom=0, right=0) -> None:
     obj.x -= VEL_arr[i][0]*velocity
     obj.y -= VEL_arr[i][1]*velocity
-    if obj.x < right:
+    if obj.x < left:
         VEL_arr[i][0] *= -1
-    if obj.x > width - left:
+        #print(obj.x, obj.y)
+    if obj.x > width - right:
         VEL_arr[i][0] *= -1
-    if obj.y < bottom:
+        #print(obj.x, obj.y)
+    if obj.y < top:
         VEL_arr[i][1] *= -1
-    if obj.y > height - top:
+        #print(obj.x, obj.y)
+    if obj.y > height - bottom:
         VEL_arr[i][1] *= -1
+        #print(obj.x, obj.y)
 
 
 #to change!!!!!!:
