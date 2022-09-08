@@ -1,5 +1,5 @@
 from screen_rect import *
-from controls_colliding import ai_movement, obj_user_movement
+from controls_colliding import ai_movement, obj_collides, obj_user_movement
 
 pg.init()
 
@@ -14,7 +14,7 @@ while run:
             if event.key == pg.K_ESCAPE:
                 run = False
             if event.key == pg.K_0:
-                rects = random_squares(1)
+                rects = random_squares(5)
 
     keys_pressed = pg.key.get_pressed()
     obj_main3.move(keys_pressed)
@@ -24,7 +24,8 @@ while run:
     obj_main3.draw(screen)
 
     for id, rect in enumerate(rects):   #this is an awesome built-in method :)
-        rect.move_bot(id, velocity=3)
+        obj_collides(obj_main3, rect, id, velocity=1)
+        #rect.move_bot(id, velocity=3)
         rect.draw(screen) 
 
         

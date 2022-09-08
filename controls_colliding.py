@@ -47,30 +47,29 @@ def ai_movement(obj, i:int, velocity:int, top=0, left=0, bottom=0, right=0) -> N
         #print(obj.x, obj.y)
 
 
-#to change!!!!!!:
-def ai_collides_movement(*args, obj, i:int, velocity:int) -> None:
-    ai_movement(obj, i, velocity)
-    if args[0].colliderect(obj):
+def obj_collides(Rect_Object1, Rect_Object2, i, velocity):
+    Rect_Object2.move_bot(i, velocity)
+    if Rect_Object1.top.colliderect(Rect_Object2.bottom):
         if VEL_arr[i][0] > 0:
             VEL_arr[i][1] *= -1
             COLOR = (255,0,0)
         elif VEL_arr[i][0] < 0:
             VEL_arr[i][1] *= -1
-    if args[1].colliderect(obj):
-        if VEL_arr[i][0] < 0:
-            VEL_arr[i][1] *= -1
-            COLOR = (255,0,0)
-        elif VEL_arr[i][0] > 0:
-            VEL_arr[i][1] *= -1
-            COLOR = (255,0,0)
-    if args[2].colliderect(obj):
+    if Rect_Object1.left.colliderect(Rect_Object2.right):
         if VEL_arr[i][1] < 0:
             VEL_arr[i][0] *= -1
             COLOR = (255,0,0)
         elif VEL_arr[i][1] > 0:
             VEL_arr[i][0] *= -1
             COLOR = (255,0,0)
-    if args[3].colliderect(obj):
+    if Rect_Object1.bottom.colliderect(Rect_Object2.top):
+        if VEL_arr[i][0] < 0:
+            VEL_arr[i][1] *= -1
+            COLOR = (255,0,0)
+        elif VEL_arr[i][0] > 0:
+            VEL_arr[i][1] *= -1
+            COLOR = (255,0,0)
+    if Rect_Object1.right.colliderect(Rect_Object2.left):
         if VEL_arr[i][1] < 0:
             VEL_arr[i][0] *= -1
             COLOR = (255,0,0)
