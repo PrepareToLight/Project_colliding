@@ -1,3 +1,4 @@
+from xmlrpc.client import Boolean
 import pygame as pg
 import numpy as np
 
@@ -47,32 +48,34 @@ def ai_movement(obj, i:int, velocity:int, top=0, left=0, bottom=0, right=0) -> N
         #print(obj.x, obj.y)
 
 
-def obj_collides(Rect_Object1, Rect_Object2, i, velocity):
-    Rect_Object2.move_bot(i, velocity)
+def obj_collides(Rect_Object1, Rect_Object2, i1, i2, velocity) -> None:
+    if i1 != None and i1 > -1:
+        Rect_Object1.move_bot(i1, velocity)
+    Rect_Object2.move_bot(i2, velocity)
     if Rect_Object1.top.colliderect(Rect_Object2.bottom):
-        if VEL_arr[i][0] > 0:
-            VEL_arr[i][1] *= -1
+        if VEL_arr[i2][0] > 0:
+            VEL_arr[i2][1] *= -1
             COLOR = (255,0,0)
-        elif VEL_arr[i][0] < 0:
-            VEL_arr[i][1] *= -1
+        elif VEL_arr[i2][0] < 0:
+            VEL_arr[i2][1] *= -1
     if Rect_Object1.left.colliderect(Rect_Object2.right):
-        if VEL_arr[i][1] < 0:
-            VEL_arr[i][0] *= -1
+        if VEL_arr[i2][1] < 0:
+            VEL_arr[i2][0] *= -1
             COLOR = (255,0,0)
-        elif VEL_arr[i][1] > 0:
-            VEL_arr[i][0] *= -1
+        elif VEL_arr[i2][1] > 0:
+            VEL_arr[i2][0] *= -1
             COLOR = (255,0,0)
     if Rect_Object1.bottom.colliderect(Rect_Object2.top):
-        if VEL_arr[i][0] < 0:
-            VEL_arr[i][1] *= -1
+        if VEL_arr[i2][0] < 0:
+            VEL_arr[i2][1] *= -1
             COLOR = (255,0,0)
-        elif VEL_arr[i][0] > 0:
-            VEL_arr[i][1] *= -1
+        elif VEL_arr[i2][0] > 0:
+            VEL_arr[i2][1] *= -1
             COLOR = (255,0,0)
     if Rect_Object1.right.colliderect(Rect_Object2.left):
-        if VEL_arr[i][1] < 0:
-            VEL_arr[i][0] *= -1
+        if VEL_arr[i2][1] < 0:
+            VEL_arr[i2][0] *= -1
             COLOR = (255,0,0)
-        elif VEL_arr[i][1] > 0:
-            VEL_arr[i][0] *= -1
+        elif VEL_arr[i2][1] > 0:
+            VEL_arr[i2][0] *= -1
             COLOR = (255,0,0)

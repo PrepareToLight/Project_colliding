@@ -73,7 +73,7 @@ class Rect_Object: #do poprawy !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         ai_movement(self.bottom, id, velocity, top=self.height, right=self.width)
         ai_movement(self.right, id, velocity, left=self.width, bottom=self.height)
         self.normalize_move_bot()  #if you're curuis whats its doing
-                                    #just comment this method, and y'll see ;)
+                                    #just commentout this method, and y'll see ;)
     def normalize_move_bot(self) -> None:
         self.left.x, self.left.y = self.top.x, self.top.y
         self.bottom.x, self.bottom.y = self.top.x, self.top.y + self.height
